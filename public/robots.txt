@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mythos-agent.com/sitemap-index.xml

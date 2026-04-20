@@ -1,0 +1,181 @@
+---
+import scanners from '../content/scanners.json';
+import { site } from '../lib/site';
+---
+
+<section id="scanners" class="scanners">
+  <div class="wrap">
+    <h2 class="section-label">Scanners</h2>
+    <h3 class="section-title">
+      {site.stats.scannerCategories} categories. {site.stats.builtInRules} built-in rules.
+    </h3>
+    <p class="lede">
+      {site.stats.productionScanners} production-wired today,
+      {site.stats.experimentalScanners} experimental — plus deep integrations
+      with Semgrep, Gitleaks, Trivy, Checkov, and Nuclei.
+    </p>
+
+    <ul class="grid" role="list">
+      {
+        scanners.map((s) => (
+          <li class:list={['chip', s.status]}>
+            <div class="chip-head">
+              <span class="name">{s.category}</span>
+              <span class="rules">{s.rules}</span>
+            </div>
+            <span class="finds">{s.finds}</span>
+            <span class="status-pill">{s.status}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="more">
+      Plus 21 more experimental scanners (SQL injection deep, NoSQL, deserialization,
+      XXE, open redirect, DNS rebinding, memory safety, and more) shipped in the
+      tarball but not yet wired into default scan.
+    </p>
+
+    <p class="link-row">
+      <a href={`${site.repo.url}/blob/main/README.md#scanners-15-wired--28-experimental-329-rules`}>
+        View full catalog on GitHub <span aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .scanners {
+    padding: 4rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 0.75rem;
+    text-wrap: balance;
+    max-width: 40rem;
+  }
+  .lede {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin: 0 0 2rem;
+    max-width: 48rem;
+  }
+  .grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 600px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1200px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .chip {
+    position: relative;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--bg-raised);
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    transition: border-color 0.15s ease;
+  }
+  .chip:hover {
+    border-color: var(--border-strong);
+  }
+  .chip.default {
+    border-left: 3px solid var(--accent);
+  }
+  .chip.experimental {
+    border-left: 3px solid var(--color-sev-dismissed);
+  }
+  .chip-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .rules {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .finds {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+  .status-pill {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    margin-top: 0.25rem;
+  }
+  .chip.default .status-pill {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .chip.experimental .status-pill {
+    color: var(--color-sev-dismissed);
+    background: rgb(156 163 175 / 0.1);
+  }
+  .more {
+    color: var(--text-subtle);
+    font-size: 0.875rem;
+    margin: 0 0 1rem;
+    max-width: 48rem;
+  }
+  .link-row a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+  .link-row a:hover {
+    text-decoration: underline;
+  }
+</style>

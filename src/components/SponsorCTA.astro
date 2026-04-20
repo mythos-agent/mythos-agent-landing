@@ -1,0 +1,138 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import cerbyChip from '../assets/cerby-chip.svg';
+import { site } from '../lib/site';
+---
+
+<section class="sponsor">
+  <div class="wrap">
+    <div class="mascot" aria-hidden="true">
+      <Image src={cerbyChip} alt="" width={96} height={96} loading="lazy" />
+    </div>
+    <div class="copy">
+      <h3>Open source. Single maintainer. Help shape the roadmap.</h3>
+      <p>
+        Mythos Agent ships under MIT in perpetuity. If it saves you time
+        or catches a real bug, sponsor the maintainer or contribute a
+        scanner — both are valued equally.
+      </p>
+      <div class="ctas">
+        <a class="primary" href={site.sponsor} target="_blank" rel="noopener">
+          <Icon name="lucide:heart" />
+          <span>Sponsor on GitHub</span>
+        </a>
+        <a class="secondary" href={`${site.repo.url}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener">
+          <Icon name="lucide:git-pull-request" />
+          <span>Contributing guide</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sponsor {
+    padding: 4rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .wrap {
+    max-width: 64rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-raised);
+    position: relative;
+    overflow: hidden;
+  }
+  .wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      60% 80% at 0% 50%,
+      var(--accent-soft),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+  @media (min-width: 720px) {
+    .wrap {
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem;
+    }
+  }
+  .mascot {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .mascot :global(img) {
+    width: 96px;
+    height: auto;
+    filter: drop-shadow(0 6px 16px var(--glow));
+  }
+  .copy {
+    position: relative;
+  }
+  .copy h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.6rem;
+    color: var(--text);
+    text-wrap: balance;
+  }
+  .copy p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+    max-width: 40rem;
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .primary,
+  .secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .primary {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+  .primary:hover {
+    background: var(--accent-hover);
+  }
+  .secondary {
+    background: var(--bg-elevated);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .secondary:hover {
+    border-color: var(--accent);
+  }
+  .ctas :global(svg) {
+    width: 1rem;
+    height: 1rem;
+  }
+</style>

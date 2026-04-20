@@ -1,0 +1,208 @@
+---
+const stages = [
+  {
+    num: '01',
+    name: 'Recon',
+    desc: 'Map the codebase. Entry points, data flow, framework boundaries, risky surfaces.',
+    icon: 'M3 12h4l3-7 4 14 3-7h4',
+  },
+  {
+    num: '02',
+    name: 'Hypothesize',
+    desc: 'Generate per-function hypotheses. "This query could be vulnerable if it concats user input."',
+    icon: 'M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3c1.8-1.2 3-3.3 3-5.7a7 7 0 0 0-7-7zM9 21h6',
+  },
+  {
+    num: '03',
+    name: 'Analyze',
+    desc: 'Every scanner runs. Taint engine and variant detector confirm or reject each hypothesis.',
+    icon: 'M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM21 21l-4.3-4.3',
+  },
+  {
+    num: '04',
+    name: 'Exploit',
+    desc: 'Chain findings into real attack paths. Confidence-rank. Generate PoC exploits where possible.',
+    icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
+  },
+];
+---
+
+<section id="how" class="how">
+  <div class="wrap">
+    <h2 class="section-label">How it works</h2>
+    <h3 class="section-title">Four-stage pipeline. Each stage feeds the next.</h3>
+
+    <ol class="pipeline" role="list">
+      {
+        stages.map((s, i) => (
+          <li class="stage">
+            <div class="stage-head">
+              <span class="num">{s.num}</span>
+              <div class="icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d={s.icon} />
+                </svg>
+              </div>
+            </div>
+            <h4>{s.name}</h4>
+            <p>{s.desc}</p>
+            {i < stages.length - 1 && (
+              <svg class="arrow" viewBox="0 0 32 12" aria-hidden="true">
+                <path
+                  d="M0 6h28M22 1l6 5-6 5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="footnote">
+      Beyond the pipeline: call-graph + taint engine, DAST smart fuzzer,
+      AI hypothesis agent, variant analysis, and git-history mining all feed
+      into the same confidence score.
+    </p>
+  </div>
+</section>
+
+<style>
+  .how {
+    padding: 4rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 2.5rem;
+    text-wrap: balance;
+    max-width: 40rem;
+  }
+  .pipeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    position: relative;
+  }
+  @media (min-width: 720px) {
+    .pipeline {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+  }
+  .stage {
+    position: relative;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-raised);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  @media (min-width: 720px) {
+    .stage {
+      border-radius: 0;
+      border-right-width: 0;
+    }
+    .stage:first-child {
+      border-top-left-radius: var(--radius-card);
+      border-bottom-left-radius: var(--radius-card);
+    }
+    .stage:last-child {
+      border-top-right-radius: var(--radius-card);
+      border-bottom-right-radius: var(--radius-card);
+      border-right-width: 1px;
+    }
+  }
+  .stage-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    letter-spacing: 0.05em;
+  }
+  .icon-wrap {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-wrap svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  .stage h4 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .stage p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+  .arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    width: 32px;
+    height: 12px;
+    color: var(--text-subtle);
+    z-index: 1;
+    transform: translateY(-50%);
+    background: var(--bg);
+    padding: 0 4px;
+  }
+  @media (min-width: 720px) {
+    .arrow {
+      display: block;
+    }
+  }
+  .footnote {
+    margin: 2rem 0 0;
+    color: var(--text-subtle);
+    font-size: 0.875rem;
+    max-width: 52rem;
+  }
+</style>

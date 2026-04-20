@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="Security" description="How to report a security vulnerability in mythos-agent.">
+  <Nav />
+  <main id="main" class="prose">
+    <h1>Security</h1>
+    <p class="lede">
+      Please <strong>do not</strong> report security vulnerabilities through
+      public GitHub issues, Discussions, or social media.
+    </p>
+
+    <h2>How to report</h2>
+    <ol>
+      <li>
+        <strong>Email</strong> — <a href={`mailto:${site.security}`}>{site.security}</a>
+      </li>
+      <li>
+        <strong>GitHub private vulnerability reporting</strong> —
+        <a href={`${site.repo.url}/security/advisories/new`} target="_blank" rel="noopener">
+          file a private advisory
+        </a>
+      </li>
+    </ol>
+
+    <h2>Service-level targets</h2>
+    <ul>
+      <li><strong>Acknowledgment</strong>: within 48 hours</li>
+      <li><strong>Triage</strong>: within 5 business days</li>
+      <li><strong>Fix or mitigation</strong>: within 14 days for critical/high, 30 days for medium/low</li>
+      <li><strong>Public disclosure</strong>: after fix is released, on a timeline agreed with the reporter</li>
+    </ul>
+
+    <h2>What to include</h2>
+    <ul>
+      <li>Description of the vulnerability</li>
+      <li>Steps to reproduce</li>
+      <li>Potential impact and severity assessment</li>
+      <li>Suggested fix (optional)</li>
+      <li>Disclosure timeline expectations</li>
+    </ul>
+
+    <h2>Scope</h2>
+    <p>
+      The full policy — covered components, out-of-scope items, threat model,
+      EU CRA stance, and bug bounty posture — lives at
+      <a href={`${site.repo.url}/blob/main/SECURITY.md`} target="_blank" rel="noopener">SECURITY.md</a>.
+    </p>
+
+    <p class="meta">Last updated: 2026-04-20.</p>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 4rem 1.25rem;
+    color: var(--text);
+  }
+  .prose h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+  }
+  .prose h2 {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .prose .lede {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem;
+  }
+  .prose p,
+  .prose li {
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .prose ol,
+  .prose ul {
+    padding-left: 1.25rem;
+  }
+  .prose strong {
+    color: var(--text);
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .meta {
+    margin-top: 2rem;
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+  }
+</style>

@@ -1,0 +1,42 @@
+{
+  "name": "mythos-agent-landing",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Marketing site for mythos-agent - AI code review for application security.",
+  "homepage": "https://mythos-agent.com",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/geist-mono": "^5.2.7",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@iconify-json/lucide": "^1.2.102",
+    "astro": "^6.1.8",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@tailwindcss/vite": "^4.2.2",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.3"
+  }
+}

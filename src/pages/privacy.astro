@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="Privacy" description="Privacy policy for mythos-agent.com.">
+  <Nav />
+  <main id="main" class="prose">
+    <h1>Privacy</h1>
+    <p class="lede">
+      We care about keeping this site lightweight and your data your own.
+    </p>
+
+    <h2>What we collect on mythos-agent.com</h2>
+    <p>
+      This marketing site uses <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Plausible Analytics</a>
+      — a privacy-respecting analytics service that does not use cookies,
+      does not track individuals across sites, and is fully compliant with
+      GDPR, CCPA, and PECR. The data collected is aggregated and includes:
+    </p>
+    <ul>
+      <li>Page URL</li>
+      <li>HTTP referrer</li>
+      <li>Browser and operating system (derived from User-Agent)</li>
+      <li>Device type (mobile / tablet / desktop)</li>
+      <li>Country (derived from IP; IP itself is not stored)</li>
+    </ul>
+    <p>No personal data is collected. No advertising or tracking cookies are set.</p>
+
+    <h2>What the mythos-agent CLI does</h2>
+    <p>
+      The CLI tool itself runs entirely on your machine. Pattern-mode scans
+      (<code>npx mythos-agent scan</code>) require no network access and
+      send no telemetry. AI-mode scans send function-level code snippets
+      to whichever LLM provider you configure (Claude, OpenAI, a local
+      Ollama endpoint, etc.) — your API key, your choice of provider,
+      your data. Mythos Agent never relays your code to our infrastructure.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Privacy questions: open an issue on
+      <a href={`${site.repo.url}/issues`} target="_blank" rel="noopener">GitHub</a>
+      or email <a href={`mailto:${site.security}`}>{site.security}</a>.
+    </p>
+
+    <p class="meta">Last updated: 2026-04-20.</p>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 4rem 1.25rem;
+    color: var(--text);
+  }
+  .prose h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+  }
+  .prose h2 {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .prose .lede {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem;
+  }
+  .prose p,
+  .prose li {
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+  .prose ul {
+    padding-left: 1.25rem;
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--code-bg);
+    padding: 0.1em 0.4em;
+    border-radius: 0.25rem;
+  }
+  .meta {
+    margin-top: 2rem;
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+  }
+</style>

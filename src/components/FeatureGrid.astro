@@ -1,0 +1,162 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const features = [
+  {
+    icon: 'lucide:brain-circuit',
+    title: 'Hypothesis-driven scanning',
+    body:
+      'Per-function hypotheses about what could go wrong — "this transaction doesn\'t lock the row; potential race condition" — instead of fixed pattern rules.',
+    stat: 'AI reasoning, not regex',
+  },
+  {
+    icon: 'lucide:search-code',
+    title: 'CVE variant analysis',
+    body:
+      'The Big-Sleep technique finds structurally similar bugs across your codebase — same root cause, different syntax, different file.',
+    stat: 'Catches the siblings of known CVEs',
+  },
+  {
+    icon: 'lucide:workflow',
+    title: 'Multi-agent pipeline',
+    body:
+      'Four coordinated stages — Recon · Hypothesize · Analyze · Exploit — each informing the next. Findings ranked by confidence and exploitability.',
+    stat: '4-stage orchestration',
+  },
+  {
+    icon: 'lucide:flask-conical',
+    title: 'Autonomous proof generation',
+    body:
+      'AI-guided fuzzing with feedback loops, plus PoC exploit generation, so findings are real — not theoretical false-positives.',
+    stat: 'Reproducible exploits, not guesses',
+  },
+  {
+    icon: 'lucide:wifi-off',
+    title: 'Works offline',
+    body:
+      'Pattern mode runs without an API key. For AI mode, bring your own LLM — Claude, GPT-4o, Ollama, LM Studio.',
+    stat: 'Pattern scan is free forever',
+  },
+];
+---
+
+<section id="features" class="features">
+  <div class="wrap">
+    <h2 class="section-label">Features</h2>
+    <h3 class="section-title">Five ideas that set Mythos Agent apart.</h3>
+
+    <div class="grid">
+      {
+        features.map((f) => (
+          <article class="card">
+            <div class="icon-wrap" aria-hidden="true">
+              <Icon name={f.icon} />
+            </div>
+            <h4>{f.title}</h4>
+            <p>{f.body}</p>
+            <p class="stat">{f.stat}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 4rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 2.5rem;
+    text-wrap: balance;
+    max-width: 40rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .card {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-raised);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .icon-wrap {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.625rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-wrap :global(svg) {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+  .card h4 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .stat {
+    color: var(--accent) !important;
+    font-family: var(--font-mono);
+    font-size: 0.75rem !important;
+    font-weight: 500;
+    flex-grow: 0 !important;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+</style>

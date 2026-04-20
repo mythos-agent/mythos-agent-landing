@@ -1,0 +1,158 @@
+/*
+ * Mythos Agent landing — design tokens.
+ * Brand values mirror BRAND.md in the sphinx-agent repo.
+ * Do not invent hex values here; add them to BRAND.md first.
+ */
+
+@import 'tailwindcss';
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/geist-mono/wght.css';
+
+@theme {
+  --color-brand-violet: #5b2a86;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-ink: #0b0b0f;
+  --color-brand-paper: #fafafa;
+
+  --color-sev-critical: #ef4444;
+  --color-sev-high: #fb923c;
+  --color-sev-medium: #f59e0b;
+  --color-sev-low: #22d3ee;
+  --color-sev-verified: #10b981;
+  --color-sev-dismissed: #9ca3af;
+
+  --font-sans:
+    'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-display:
+    'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-mono:
+    'Geist Mono Variable', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo,
+    Consolas, monospace;
+
+  --radius-card: 1rem;
+  --radius-chip: 9999px;
+}
+
+/* Semantic tokens that swap per theme.
+   Defaults are LIGHT; dark overrides below. */
+:root {
+  --bg: #fafafa;
+  --bg-raised: #ffffff;
+  --bg-elevated: #ffffff;
+  --text: #0b0b0f;
+  --text-muted: #4b5563;
+  --text-subtle: #6b7280;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --code-bg: #f3f4f6;
+  --code-fg: #0b0b0f;
+  --accent: #5b2a86;
+  --accent-hover: #4b2270;
+  --accent-fg: #ffffff;
+  --accent-soft: rgb(91 42 134 / 0.08);
+  --glow: rgb(91 42 134 / 0.15);
+  --nav-bg: rgb(250 250 250 / 0.85);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0b0b0f;
+    --bg-raised: #14141a;
+    --bg-elevated: #1c1c24;
+    --text: #fafafa;
+    --text-muted: #9ca3af;
+    --text-subtle: #6b7280;
+    --border: #2a2a33;
+    --border-strong: #3a3a44;
+    --code-bg: #1c1c24;
+    --code-fg: #fafafa;
+    --accent: #22d3ee;
+    --accent-hover: #67e8f9;
+    --accent-fg: #0b0b0f;
+    --accent-soft: rgb(34 211 238 / 0.08);
+    --glow: rgb(34 211 238 / 0.15);
+    --nav-bg: rgb(11 11 15 / 0.85);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0b0f;
+  --bg-raised: #14141a;
+  --bg-elevated: #1c1c24;
+  --text: #fafafa;
+  --text-muted: #9ca3af;
+  --text-subtle: #6b7280;
+  --border: #2a2a33;
+  --border-strong: #3a3a44;
+  --code-bg: #1c1c24;
+  --code-fg: #fafafa;
+  --accent: #22d3ee;
+  --accent-hover: #67e8f9;
+  --accent-fg: #0b0b0f;
+  --accent-soft: rgb(34 211 238 / 0.08);
+  --glow: rgb(34 211 238 / 0.15);
+  --nav-bg: rgb(11 11 15 / 0.85);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #fafafa;
+  --bg-raised: #ffffff;
+  --bg-elevated: #ffffff;
+  --text: #0b0b0f;
+  --text-muted: #4b5563;
+  --text-subtle: #6b7280;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --code-bg: #f3f4f6;
+  --code-fg: #0b0b0f;
+  --accent: #5b2a86;
+  --accent-hover: #4b2270;
+  --accent-fg: #ffffff;
+  --accent-soft: rgb(91 42 134 / 0.08);
+  --glow: rgb(91 42 134 / 0.15);
+  --nav-bg: rgb(250 250 250 / 0.85);
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

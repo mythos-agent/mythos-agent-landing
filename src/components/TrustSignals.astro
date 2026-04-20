@@ -1,0 +1,192 @@
+---
+import { Icon } from 'astro-icon/components';
+import { site } from '../lib/site';
+
+const signals = [
+  {
+    icon: 'lucide:shield-check',
+    title: 'OpenSSF Best Practices',
+    sub: 'Passing tier · targeted June 2026',
+    href: 'https://www.bestpractices.dev/',
+  },
+  {
+    icon: 'lucide:signature',
+    title: 'Sigstore-signed releases',
+    sub: 'Keyless cosign attestations',
+    href: 'https://www.sigstore.dev/',
+  },
+  {
+    icon: 'lucide:package-check',
+    title: 'CycloneDX SBOMs',
+    sub: 'Per release, supply-chain traceable',
+    href: 'https://cyclonedx.org/',
+  },
+  {
+    icon: 'lucide:scale',
+    title: 'MIT Licensed',
+    sub: 'Open source in perpetuity',
+    href: `${site.repo.url}/blob/main/LICENSE`,
+  },
+];
+---
+
+<section id="trust" class="trust">
+  <div class="wrap">
+    <h2 class="section-label">Trust</h2>
+    <h3 class="section-title">Built for security-minded teams.</h3>
+
+    <ul class="grid" role="list">
+      {
+        signals.map((s) => (
+          <li class="badge">
+            <a href={s.href} target="_blank" rel="noopener">
+              <div class="icon-wrap" aria-hidden="true">
+                <Icon name={s.icon} />
+              </div>
+              <span class="title">{s.title}</span>
+              <span class="sub">{s.sub}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <blockquote class="honest">
+      <p>
+        Mythos Agent <strong>complements</strong> — not replaces — Semgrep,
+        Snyk, and CodeQL. It adds AI reasoning on top of traditional SAST,
+        not a wholesale replacement for a mature rules engine.
+      </p>
+    </blockquote>
+
+    <p class="compliance">
+      <span>EU CRA stance published</span>
+      <span class="divider">·</span>
+      <span>SOC 2 / HIPAA / PCI mappings in docs</span>
+      <span class="divider">·</span>
+      <span>GDPR article mapping on privacy findings</span>
+      <span class="divider">·</span>
+      <span>48-hour vulnerability acknowledgment</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .trust {
+    padding: 4rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 2rem;
+  }
+  .grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .badge a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-raised);
+    text-decoration: none;
+    color: var(--text);
+    transition:
+      border-color 0.15s ease,
+      transform 0.15s ease;
+    height: 100%;
+  }
+  .badge a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .icon-wrap {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+  }
+  .icon-wrap :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+  }
+  .honest {
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.25rem;
+    background: var(--accent-soft);
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 0 0 1.5rem;
+  }
+  .honest p {
+    margin: 0;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 52rem;
+  }
+  .honest strong {
+    color: var(--accent);
+  }
+  .compliance {
+    color: var(--text-subtle);
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+  }
+  .divider {
+    opacity: 0.5;
+  }
+</style>

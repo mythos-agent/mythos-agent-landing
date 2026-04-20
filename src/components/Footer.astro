@@ -1,0 +1,185 @@
+---
+import { site } from '../lib/site';
+
+const columns = [
+  {
+    heading: 'Product',
+    links: [
+      { label: 'Features', href: '/#features' },
+      { label: 'Scanners', href: '/#scanners' },
+      { label: 'Install', href: '/#install' },
+      { label: 'Roadmap', href: `${site.repo.url}/blob/main/ROADMAP.md`, external: true },
+    ],
+  },
+  {
+    heading: 'Docs',
+    links: [
+      { label: 'README', href: site.repo.url, external: true },
+      { label: 'Vision', href: `${site.repo.url}/blob/main/VISION.md`, external: true },
+      { label: 'Security Policy', href: `${site.repo.url}/blob/main/SECURITY.md`, external: true },
+      { label: 'Threat Model', href: `${site.repo.url}/blob/main/docs/security/threat-model.md`, external: true },
+    ],
+  },
+  {
+    heading: 'Community',
+    links: [
+      { label: 'GitHub', href: site.repo.url, external: true },
+      { label: 'Discussions', href: `${site.repo.url}/discussions`, external: true },
+      { label: 'Sponsor', href: site.sponsor, external: true },
+      { label: 'Contributing', href: `${site.repo.url}/blob/main/CONTRIBUTING.md`, external: true },
+    ],
+  },
+  {
+    heading: 'Legal',
+    links: [
+      { label: 'Privacy', href: '/privacy' },
+      { label: 'Security', href: '/security' },
+      { label: `Report a vulnerability`, href: `mailto:${site.security}` },
+      { label: 'License (MIT)', href: `${site.repo.url}/blob/main/LICENSE`, external: true },
+    ],
+  },
+];
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <span class="wordmark">mythos<span class="accent">-agent</span></span>
+        <p class="tag">AI code review for application security. Open source, MIT-licensed.</p>
+      </div>
+
+      <div class="columns">
+        {
+          columns.map((col) => (
+            <div class="col">
+              <h5>{col.heading}</h5>
+              <ul>
+                {
+                  col.links.map((l) => (
+                    <li>
+                      <a
+                        href={l.href}
+                        {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="bottom">
+      <p>© 2026 Zhijie Wong · MIT licensed · Not affiliated with Anthropic.</p>
+      <p>
+        Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
+        · Deployed on <a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a>
+        · Analytics by <a href="https://plausible.io" target="_blank" rel="noopener">Plausible</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 1.25rem 2rem;
+    background: var(--bg-raised);
+    color: var(--text-muted);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  @media (min-width: 800px) {
+    .top {
+      grid-template-columns: 1.2fr 3fr;
+    }
+  }
+  .brand .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .brand .accent {
+    color: var(--accent);
+  }
+  .tag {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    max-width: 20rem;
+    line-height: 1.5;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+  @media (min-width: 640px) {
+    .columns {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .col h5 {
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .col a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.15s ease;
+  }
+  .col a:hover {
+    color: var(--text);
+  }
+  .bottom {
+    padding-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .bottom p {
+    margin: 0;
+  }
+  .bottom a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 2px;
+  }
+  .bottom a:hover {
+    color: var(--text);
+    text-decoration-color: var(--accent);
+  }
+</style>
