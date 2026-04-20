@@ -1,7 +1,6 @@
 ---
-// Demo section — renders a static terminal mock that mirrors the output spec
-// in sphinx-agent/docs/DEMO-SCRIPT.md. When the real GIF is recorded (ScreenToGif
-// or VHS → public/demo.gif), swap the <div class="terminal"> below for an <img>.
+// Real demo GIF, recorded per sphinx-agent/docs/DEMO-SCRIPT.md.
+// Source: public/demo.gif (~230 KB, 15s loop, 720px wide).
 ---
 
 <section id="demo" class="demo">
@@ -14,33 +13,16 @@
     </p>
 
     <figure class="figure">
-      <div
-        class="terminal"
-        role="img"
-        aria-label="Terminal running npx mythos-agent quick. Five high-severity findings are surfaced in 10 milliseconds, with a suggested auto-fix command."
-      >
-        <div class="term-chrome" aria-hidden="true">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-          <span class="term-title">bash — mythos-agent</span>
-        </div>
-        <pre class="term-body"><span class="dim"># find security bugs in your code</span>
-<span class="prompt">$</span> <span class="cmd">npx mythos-agent quick</span>
-
-<span class="ok">✓</span> Scanned 47 files in <span class="accent">10 ms</span>
-
-<span class="sev-crit">🔴 CRITICAL</span>  SQL Injection           <span class="muted">src/api/users.ts:42</span>
-<span class="sev-crit">🔴 CRITICAL</span>  JWT None Algorithm      <span class="muted">src/auth/verify.ts:18</span>
-<span class="sev-crit">🔴 CRITICAL</span>  Hardcoded DB Password   <span class="muted">src/db/connect.ts:7</span>
-<span class="sev-high">🟠 HIGH</span>      Reflected XSS           <span class="muted">src/views/search.tsx:31</span>
-<span class="sev-high">🟠 HIGH</span>      Reflected XSS           <span class="muted">src/views/profile.tsx:54</span>
-<span class="muted">   …and 8 more</span>
-
-<span class="accent">→ mythos-agent fix --severity critical --apply</span></pre>
-      </div>
+      <img
+        src="/demo.gif"
+        alt="Terminal running npx mythos-agent quick against a vulnerable fixture. The scanner returns 13 findings in 10 milliseconds, highlighting five critical and high-severity issues with file:line pointers and a suggested auto-fix command."
+        width="1200"
+        height="720"
+        loading="lazy"
+        decoding="async"
+      />
       <figcaption>
-        Transcript: <code>npx mythos-agent quick</code> → scanned 47 files in 10 ms →
+        Transcript: <code>npx mythos-agent quick</code> → scanned 47 files in 10&nbsp;ms →
         5 findings visible with file:line pointers → auto-fix hint. 13 total findings.
       </figcaption>
     </figure>
@@ -92,6 +74,15 @@
     max-width: 1080px;
     margin-inline: auto;
   }
+  .figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border);
+    background: #0b0b0f;
+    box-shadow: 0 20px 60px -20px var(--glow);
+  }
   figcaption {
     text-align: center;
     margin-top: 0.75rem;
@@ -105,78 +96,5 @@
     color: var(--text);
     padding: 0.1em 0.35em;
     border-radius: 0.25rem;
-  }
-
-  .terminal {
-    background: #0b0b0f;
-    border: 1px solid #2a2a33;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    line-height: 1.55;
-    color: #fafafa;
-    box-shadow: 0 20px 60px -20px var(--glow);
-  }
-  .term-chrome {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.6rem 0.85rem;
-    border-bottom: 1px solid #2a2a33;
-    background: #14141a;
-  }
-  .term-chrome .dot {
-    width: 0.65rem;
-    height: 0.65rem;
-    border-radius: 50%;
-  }
-  .term-chrome .dot.red {
-    background: #ef4444;
-  }
-  .term-chrome .dot.yellow {
-    background: #f59e0b;
-  }
-  .term-chrome .dot.green {
-    background: #10b981;
-  }
-  .term-title {
-    margin-left: 0.5rem;
-    color: #9ca3af;
-    font-size: 0.75rem;
-  }
-  .term-body {
-    margin: 0;
-    padding: 1.25rem 1.25rem 1.5rem;
-    white-space: pre;
-    overflow-x: auto;
-  }
-  .term-body .dim {
-    color: #6b7280;
-  }
-  .term-body .prompt {
-    color: #22d3ee;
-  }
-  .term-body .cmd {
-    color: #fafafa;
-  }
-  .term-body .ok {
-    color: #10b981;
-    font-weight: 700;
-  }
-  .term-body .accent {
-    color: #22d3ee;
-    font-weight: 600;
-  }
-  .term-body .muted {
-    color: #6b7280;
-  }
-  .term-body .sev-crit {
-    color: #ef4444;
-    font-weight: 700;
-  }
-  .term-body .sev-high {
-    color: #fb923c;
-    font-weight: 700;
   }
 </style>
