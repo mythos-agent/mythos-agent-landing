@@ -49,6 +49,6 @@
     { "source": "/vision", "destination": "https://github.com/mythos-agent/mythos-agent/blob/main/VISION.md", "permanent": false },
     { "source": "/roadmap", "destination": "https://github.com/mythos-agent/mythos-agent/blob/main/ROADMAP.md", "permanent": false },
     { "source": "/docs", "destination": "https://github.com/mythos-agent/mythos-agent#readme", "permanent": false },
-    { "source": "/discord", "destination": "https://discord.com/invite/PLACEHOLDER", "permanent": false }
+    { "source": "/discord", "destination": "https://discord.gg/kwjATvPbdZ", "permanent": false }
   ]
 }
