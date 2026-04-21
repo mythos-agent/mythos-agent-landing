@@ -50,6 +50,6 @@
     { "source": "/roadmap", "destination": "https://github.com/mythos-agent/mythos-agent/blob/main/ROADMAP.md", "permanent": false },
     { "source": "/docs", "destination": "https://github.com/mythos-agent/mythos-agent#readme", "permanent": false },
     { "source": "/discord", "destination": "https://discord.gg/kwjATvPbdZ", "permanent": false },
-    { "source": "/feishu", "destination": "https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=PLACEHOLDER", "permanent": false }
+    { "source": "/feishu", "destination": "https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=4b6j11d3-a7b9-467e-8571-74943ebb34d0", "permanent": false }
   ]
 }
